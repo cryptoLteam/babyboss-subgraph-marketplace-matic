@@ -1,0 +1,32 @@
+type Items @entity {
+  id: ID!
+  index: BigInt!
+  category: String!
+  imgHash: String!
+  count: BigInt!
+  priceForBBOSS: BigInt!
+  priceForUSD: BigInt!
+  createdAt: BigInt!
+}
+
+type ListHistory @entity {
+  id: ID!
+  index: BigInt!
+  category: String!
+  imgHash: String!
+  count: BigInt!
+  priceForBBOSS: BigInt!
+  priceForUSD: BigInt!
+  createdAt: BigInt!
+}
+
+type BuyHistory @entity {
+  id: ID!
+  buyer: Bytes!
+  index: BigInt!
+  count: BigInt!
+  payMethod: String!
+  paidAmount: BigInt!
+  email: String!
+  createdAt: BigInt!
+}
