@@ -1,21 +1,30 @@
-type Items @entity {
+type ItemLists @entity {
+  id: ID!
+  index1: BigInt!
+  category1: String!
+  imgHash1: String!
+  count1: BigInt!
+  priceForBBOSS1: BigInt!
+  priceForUSD1: BigInt!
+  createdAt1: BigInt!
+}
+
+type ItemHistory @entity {
   id: ID!
   index: BigInt!
   category: String!
-  imgHash: String!
-  count: BigInt!
-  priceForBBOSS: BigInt!
-  priceForUSD: BigInt!
-  createdAt: BigInt!
 }
+
 
 type ListHistory @entity {
   id: ID!
   index: BigInt!
+  title: String!
   category: String!
   imgHash: String!
   count: BigInt!
   priceForBBOSS: BigInt!
+  priceForMATIC: BigInt!
   priceForUSD: BigInt!
   createdAt: BigInt!
 }
@@ -25,6 +34,8 @@ type BuyHistory @entity {
   buyer: Bytes!
   index: BigInt!
   count: BigInt!
+  category: String!
+  title: String!
   payMethod: String!
   paidAmount: BigInt!
   email: String!

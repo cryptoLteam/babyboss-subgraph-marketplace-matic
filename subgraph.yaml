@@ -6,9 +6,9 @@ dataSources:
     name: Marketplace
     network: mumbai
     source:
-      address: "0xc61d09828eDADfE650eA2d9266581154bf69a91e"
+      address: "0x05b69843b84ea2762331e055d403cd23d344e19b"
       abi: Marketplace
-      startBlock: 34093540
+      startBlock: 34178345
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -20,8 +20,8 @@ dataSources:
         - name: Marketplace
           file: ./abis/Marketplace.json
       eventHandlers:
-        - event: BuyItem(indexed address,uint256,uint256,string,uint256,string)
+        - event: BuyItem(indexed address,uint256,uint256,string,string,string,uint256,string)
           handler: handleBuyItem
-        - event: ListItem(indexed uint256,string,string,uint256,uint256,uint256)
+        - event: ListItem(indexed uint256,string,string,string,uint256,uint256,uint256,uint256)
           handler: handleListItem
       file: ./src/Marketplace.ts
