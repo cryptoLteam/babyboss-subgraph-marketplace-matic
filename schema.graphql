@@ -1,12 +1,14 @@
-type ItemLists @entity {
+type ItemList @entity {
   id: ID!
-  index1: BigInt!
-  category1: String!
-  imgHash1: String!
-  count1: BigInt!
-  priceForBBOSS1: BigInt!
-  priceForUSD1: BigInt!
-  createdAt1: BigInt!
+  index: BigInt!
+  title: String!
+  category: String!
+  imgHash: String!
+  count: BigInt!
+  priceForBBOSS: BigInt!
+  priceForMATIC: BigInt!
+  priceForUSD: BigInt!
+  createdAt: BigInt!
 }
 
 type ItemHistory @entity {

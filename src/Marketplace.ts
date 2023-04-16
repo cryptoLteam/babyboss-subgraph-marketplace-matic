@@ -3,7 +3,7 @@ import {
     BuyItem,
     ListItem,
 } from "../generated/Marketplace/Marketplace"
-import { ItemLists, ItemHistory, ListHistory, BuyHistory } from "../generated/schema"
+import { ItemList, ItemHistory, ListHistory, BuyHistory } from "../generated/schema"
 
 export function handleListItem(event: ListItem): void {
   const listId = event.transaction.hash.toHex() + "-" + event.logIndex.toString()
@@ -23,29 +23,21 @@ export function handleListItem(event: ListItem): void {
     listHistory.save()
   } 
 
-  // const itemId = event.transaction.hash.toHex() + event.logIndex.toString();
-  // let item = ItemHistory.load(itemId)
-
-  // if (!item) {
-    // let item = new ItemHistory(itemId)
-    // item.index = BigInt.fromString("1")
-    // item.category = '1'
-    // item.save()
-  // }
-
-  // const itemId = event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  // let item = ItemLists.load(itemId)
-  // if(!item) {
-  //   item = new ItemLists(itemId)
-  //   item.index1 = event.params.index
-  //   item.category1 = event.params.category
-  //   item.imgHash1 = event.params.imgHash
-  //   item.count1 = event.params.count
-  //   item.priceForBBOSS1 = event.params.priceForBBOSS
-  //   item.priceForUSD1 = event.params.priceForUSD
-  //   item.createdAt1 = event.block.timestamp
-  //   item.save()
-  // }
+  const itemId = event.address.toHex() + "-" + event.params.index.toString()
+  let item = ItemList.load(itemId)
+  if(!item) {
+    item = new ItemList(itemId)
+    item.index = event.params.index
+    item.title = event.params.title
+    item.category = event.params.category
+    item.imgHash = event.params.imgHash
+    item.count = event.params.count
+    item.priceForBBOSS = event.params.priceForBBOSS
+    item.priceForMATIC = event.params.priceForMATIC
+    item.priceForUSD = event.params.priceForUSD
+    item.createdAt = event.block.timestamp
+    item.save()
+  }
 
 }
 
@@ -65,15 +57,15 @@ export function handleBuyItem(event: BuyItem): void {
         buyHistory.save()
     }
     
-    // const itemId = event.params.index.toString()
-    // let item = ItemLists.load(itemId)
-    // if(item) {
-    //     if(item.count >= event.params.count) {
-    //         item.count = item.count1.minus(event.params.count)
-    //     } else {
-    //         item.count = BigInt.fromString("0")
-    //     }
-    //     item.save()
-    // }
+  const itemId = event.address.toHex() + "-" + event.params.index.toString()
+    let item = ItemList.load(itemId)
+    if(item) {
+        if(item.count >= event.params.count) {
+            item.count = item.count.minus(event.params.count)
+        } else {
+            item.count = BigInt.fromString("0")
+        }
+        item.save()
+    }
 }
     

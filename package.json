@@ -4,8 +4,8 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "auth": "graph auth --product hosted-service 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",
-    "deploy": "graph deploy --product hosted-service asinoe/babysubgraph",
+    "auth": "graph auth --product hosted-service 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",
+    "deploy": "graph deploy --product hosted-service seniorblockchaindev/babyboss_marketplace_1",
     "create-local": "graph create --node http://localhost:8020/ babyBoss",
     "remove-local": "graph remove --node http://localhost:8020/ babyBoss",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 babyBoss",
