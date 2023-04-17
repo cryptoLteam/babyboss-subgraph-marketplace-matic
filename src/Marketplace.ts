@@ -16,7 +16,6 @@ export function handleListItem(event: ListItem): void {
     listHistory.imgHash = event.params.imgHash
     listHistory.count = event.params.count
     listHistory.priceForBBOSS = event.params.priceForBBOSS
-    listHistory.priceForMATIC = event.params.priceForMATIC
     listHistory.priceForUSD = event.params.priceForUSD
     listHistory.createdAt = event.block.timestamp
 
@@ -33,7 +32,6 @@ export function handleListItem(event: ListItem): void {
     item.imgHash = event.params.imgHash
     item.count = event.params.count
     item.priceForBBOSS = event.params.priceForBBOSS
-    item.priceForMATIC = event.params.priceForMATIC
     item.priceForUSD = event.params.priceForUSD
     item.createdAt = event.block.timestamp
     item.save()
@@ -46,6 +44,7 @@ export function handleBuyItem(event: BuyItem): void {
     let buyHistory = BuyHistory.load(buyId)
     if(!buyHistory) {
         buyHistory = new BuyHistory(buyId)
+        buyHistory.buyer = event.params.buyer // !
         buyHistory.index = event.params.index // !
         buyHistory.count = event.params.count // !
         buyHistory.category = event.params.category;
